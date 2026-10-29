@@ -1,0 +1,51 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Admin Support Panel</title><link rel="stylesheet" href="css/style.css"></head><body>
+<header><h1>🛠 Support Panel</h1><div class="r"><span id="who"></span><button class="ghost" id="logout">Logout</button></div></header>
+<main>
+  <div class="tabs">
+    <button class="ghost active" data-t="tk">Tickets</button>
+    <button class="ghost" data-t="rq">Support requests <span id="rq-n"></span></button>
+  </div>
+
+  <section id="tk">
+    <div class="stats">
+      <div class="stat"><b id="s1">0</b>Total tickets</div>
+      <div class="stat"><b id="s2">0</b>Confirmed</div>
+      <div class="stat"><b id="s3">0</b>Cancelled / refunded</div>
+      <div class="stat"><b id="s4">0</b>Resolved</div>
+    </div>
+    <div class="card"><div class="grid">
+      <div><label>Search ticket ID, vehicle no. or email</label><input id="q" placeholder="TKT-XXXXXXXX"></div>
+      <div><label>Status</label><select id="st"><option value="">All</option><option>confirmed</option><option>cancelled</option><option>refunded</option><option>resolved</option></select></div>
+    </div></div>
+    <div class="card"><div class="table-wrap"><table>
+      <thead><tr><th>Ticket ID</th><th>Customer</th><th>Vehicle</th><th>Route</th><th>Date</th><th>Total</th><th>Status</th></tr></thead>
+      <tbody id="rows"></tbody></table></div></div>
+  </section>
+
+  <section id="rq" class="hidden">
+    <div class="card"><div class="grid">
+      <div><label>Search ticket ID or email</label><input id="rq-q" placeholder="TKT-XXXXXXXX"></div>
+      <div><label>Status</label><select id="rq-st"><option value="">All</option><option value="open">open</option><option value="in_progress">in progress</option><option value="closed">closed</option></select></div>
+    </div></div>
+    <div class="card"><div class="table-wrap"><table>
+      <thead><tr><th>Ticket ID</th><th>Customer</th><th>Issue</th><th>Status</th><th>Date</th></tr></thead>
+      <tbody id="rq-rows"></tbody></table></div></div>
+  </section>
+</main>
+
+<div class="modal" id="m"><div class="card">
+  <div class="big code" id="d-code"></div><div id="d-info"><small></small></div>
+  <label>Status</label><select id="d-st"><option>confirmed</option><option>cancelled</option><option>refunded</option><option>resolved</option></select>
+  <label>Support note</label><textarea id="d-note" rows="3"></textarea>
+  <p style="margin-top:14px"><button id="d-save">Save</button> <button class="ghost" id="d-close">Close</button></p></div></div>
+
+<div class="modal" id="rm"><div class="card">
+  <div class="big code" id="r-code"></div><div id="r-info"><small></small></div><p id="r-msg"></p>
+  <label>Status</label><select id="r-st"><option value="open">open</option><option value="in_progress">in progress</option><option value="closed">closed</option></select>
+  <label>Reply to customer</label><textarea id="r-reply" rows="3"></textarea>
+  <p style="margin-top:14px"><button id="r-save">Save reply</button> <button class="ghost" id="r-close">Close</button></p></div></div>
+<div id="toast"></div>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script>
+<script src="js/config.js"></script><script src="js/app.js"></script><script src="js/admin.js"></script>
+</body></html>

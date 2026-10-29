@@ -1,0 +1,36 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Vehicle Ticket System – Login</title><link rel="stylesheet" href="css/style.css"></head><body>
+<div class="auth card">
+  <h2 style="margin-top:0">🎫 Vehicle Ticket System</h2>
+  <div class="tabs"><button class="ghost active" id="tl">Login</button><button class="ghost" id="ts">Sign up</button></div>
+
+  <form id="f">
+    <div id="nameRow" class="hidden"><label>Full name</label><input id="name"></div>
+    <label>Email</label><input id="email" type="email" required>
+    <label>Password</label>
+    <div class="pw"><input id="pw" type="password" minlength="6" required><button type="button" id="eye" class="ghost">Show</button></div>
+    <div id="secRow" class="hidden">
+      <label>Security question (needed if you forget your password)</label>
+      <select id="sq"><option>What is your pet's name?</option><option>What is your birth city?</option><option>Who is your favourite teacher?</option></select>
+      <label>Your answer</label><input id="sa">
+    </div>
+    <p id="forgotRow" style="text-align:right;margin:6px 0 0"><a href="#" id="forgot">Forgot password?</a></p>
+    <p class="err" id="err"></p>
+    <button style="width:100%" id="go">Login</button>
+  </form>
+
+  <div id="rp" class="hidden">
+    <hr style="border:0;border-top:1px solid var(--line);margin:18px 0">
+    <h3 style="margin:0 0 4px">Reset password</h3>
+    <p id="qtext" style="font-weight:600;margin:6px 0 0"></p>
+    <label>Your answer</label><input id="ra">
+    <label>New password</label>
+    <div class="pw"><input id="npw" type="password" minlength="6"><button type="button" id="eye2" class="ghost">Show</button></div>
+    <p class="err" id="rerr"></p>
+    <button type="button" id="rbtn" style="width:100%">Set new password</button>
+  </div>
+</div>
+<div id="toast"></div>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script>
+<script src="js/config.js"></script><script src="js/app.js"></script><script src="js/auth.js"></script>
+</body></html>

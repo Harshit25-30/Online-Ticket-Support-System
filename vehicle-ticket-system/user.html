@@ -1,0 +1,66 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Buy Tickets</title><link rel="stylesheet" href="css/style.css"></head><body>
+<header><h1>🎫 Vehicle Tickets</h1><div class="r"><span id="who"></span><button class="ghost" id="logout">Logout</button></div></header>
+<main>
+  <div class="tabs">
+    <button class="ghost active" data-t="buy">Buy ticket</button>
+    <button class="ghost" data-t="mine">My tickets</button>
+    <button class="ghost" data-t="support">Support</button>
+  </div>
+
+  <section id="buy" class="card">
+    <form id="f">
+      <div class="grid">
+        <div><label>Vehicle type</label><select id="vt"></select></div>
+        <div><label>Vehicle number</label><input id="vn" placeholder="e.g. MH12 AB 1234" required></div>
+        <div><label>From</label><input id="from" required></div>
+        <div><label>To</label><input id="to" required></div>
+        <div><label>Travel date</label><input id="date" type="date" required></div>
+        <div><label>Passengers (1–10)</label><input id="pax" type="number" min="1" max="10" value="1" required></div>
+      </div>
+      <div class="price">Total: <span id="total">₹0</span></div>
+      <p class="err" id="err"></p>
+      <button>Pay &amp; buy ticket</button>
+      <p><small>Demo checkout: no real payment is taken.</small></p>
+    </form>
+  </section>
+
+  <section id="mine" class="card hidden">
+    <div class="table-wrap"><table>
+      <thead><tr><th>Ticket ID</th><th>Vehicle</th><th>Route</th><th>Date</th><th>Total</th><th>Status</th></tr></thead>
+      <tbody id="rows"></tbody></table></div>
+    <p id="empty" class="hidden"><small>No tickets yet.</small></p>
+  </section>
+
+  <section id="support" class="card hidden">
+    <h3 style="margin-top:0">Raise a support request</h3>
+    <form id="sf">
+      <div class="grid">
+        <div><label>Ticket</label><select id="s-ticket" required></select></div>
+        <div><label>Issue</label><select id="s-type">
+          <option value="cancel">Cancel ticket</option><option value="refund">Refund</option>
+          <option value="change_details">Change details</option><option value="wrong_charge">Wrong charge</option><option value="other">Other</option></select></div>
+      </div>
+      <label>Describe your problem</label><textarea id="s-msg" rows="3" required></textarea>
+      <p class="err" id="s-err"></p>
+      <button>Submit request</button>
+    </form>
+    <h3>My requests</h3>
+    <div class="table-wrap"><table>
+      <thead><tr><th>Ticket</th><th>Issue</th><th>Status</th><th>Reply from support</th></tr></thead>
+      <tbody id="s-rows"></tbody></table></div>
+    <p id="s-empty" class="hidden"><small>No requests yet.</small></p>
+  </section>
+</main>
+
+<div class="modal" id="ok"><div class="card center"><div class="big">✅ Ticket confirmed</div>
+  <p>Your unique Ticket ID — keep it for support:</p><div class="big code" id="tc"></div>
+  <button id="copy">Copy ID</button> <button class="ghost" id="close">Close</button></div></div>
+
+<button id="chat-btn">💬 Help</button>
+<div id="chat"><div class="hd">Ticket assistant</div><div id="msgs"></div>
+  <form id="cf"><input id="ci" placeholder="Ask about your tickets…" autocomplete="off"><button>Send</button></form></div>
+<div id="toast"></div>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script>
+<script src="js/config.js"></script><script src="js/app.js"></script><script src="js/user.js"></script><script src="js/chatbot.js"></script>
+</body></html>
